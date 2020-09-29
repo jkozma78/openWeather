@@ -57,7 +57,7 @@ function createWeather() {
         rain = rain + weatherObj.minutely[r].precipitation
     };
 
-    document.querySelector("#alert").innerHTML=weatherObj.alerts[0].event
+    //document.querySelector("#alert").innerHTML=weatherObj.alerts[0].event
     
     document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt);
     document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm";
