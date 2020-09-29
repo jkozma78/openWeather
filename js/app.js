@@ -42,42 +42,43 @@ function getLocation() {
 };
 
 function showPosition(position) {
-    console.log("hello");
-    console.log("Latitude: " + position.coords.latitude +
-        "Longitude: " + position.coords.longitude);
-    latLon = [position.coords.latitude, position.coords.longitude]
+    // console.log("Latitude: " + position.coords.latitude +
+    //     "Longitude: " + position.coords.longitude);
+    latLon = [position.coords.latitude, position.coords.longitude];
+    console.log(latLon);
     return latLon
 };
 
 
 function createWeather() {
+    weatherObj.alerts ? weatherAlerts():document.querySelector("#alert").innerHTML="Nincs riasztás";
+    foreCast();
+
 
     let rain = 0;
     for (let r in weatherObj.minutely) {
         rain = rain + weatherObj.minutely[r].precipitation
     };
 
-    //document.querySelector("#alert").innerHTML=weatherObj.alerts[0].event
     
     document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt);
     document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm";
-    //document.querySelector(".card").innerHTML = weatherObj.alerts[0].description
-
+    
     let ikon = document.querySelector(".icon");
     let attr = ("img/openweather/" + weatherObj.current.weather[0].icon + "@2x.png");
     ikon.setAttribute("src", attr);
     ikon.setAttribute("title", weatherObj.current.weather[0].description)
-
+    
     let a = document.querySelector("#temp");
     a.innerHTML = weatherObj.timezone + " " + weatherObj.current.temp.toFixed() + `&#8451`;
-
+    
     let b = document.querySelector("#sunrise");
     let sunriseHour = new Date(weatherObj.current.sunrise * 1000).getHours();
     sunriseHour = frontZero(sunriseHour);
     let sunriseMinute = new Date(weatherObj.current.sunrise * 1000).getMinutes();
     sunriseMinute = frontZero(sunriseMinute);
     b.innerHTML = "Napkelte:" + " " + sunriseHour + ":" + sunriseMinute;
-
+    
     let c = document.querySelector("#sunset");
     let sunsetHour = new Date(weatherObj.current.sunset * 1000).getHours();
     sunsetHour = frontZero(sunsetHour);
@@ -102,3 +103,15 @@ function frontZero(time) {
     return time;
 };
 
+function foreCast(){
+    document.querySelector("#day1").innerHTML=weatherObj.daily[0].temp.day
+    document.querySelector("#day2").innerHTML=weatherObj.daily[1].temp.day
+    document.querySelector("#day3").innerHTML=weatherObj.daily[2].temp.day
+    document.querySelector("#day4").innerHTML=weatherObj.daily[3].temp.day
+};
+
+function weatherAlerts(){
+    document.querySelector("#alert").innerHTML=weatherObj.alerts[0].event
+    document.querySelector(".card").innerHTML = weatherObj.alerts[0].description
+    
+}
