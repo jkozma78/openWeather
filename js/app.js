@@ -104,10 +104,10 @@ function frontZero(time) {
 };
 
 function foreCast(){
-    document.querySelector("#day1").innerHTML=weatherObj.daily[0].temp.day
-    document.querySelector("#day2").innerHTML=weatherObj.daily[1].temp.day
-    document.querySelector("#day3").innerHTML=weatherObj.daily[2].temp.day
-    document.querySelector("#day4").innerHTML=weatherObj.daily[3].temp.day
+    document.querySelector("#day1").innerHTML=(weatherObj.daily[0].temp.day).toFixed()
+    document.querySelector("#day2").innerHTML=weatherObj.daily[1].temp.day.toFixed()
+    document.querySelector("#day3").innerHTML=weatherObj.daily[2].temp.day.toFixed()
+    document.querySelector("#day4").innerHTML=weatherObj.daily[3].temp.day.toFixed()
 };
 
 function weatherAlerts(){
