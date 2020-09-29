@@ -61,7 +61,7 @@ function createWeather() {
     
     document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt);
     document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm";
-    document.querySelector(".card").innerHTML = weatherObj.alerts[0].description
+    //document.querySelector(".card").innerHTML = weatherObj.alerts[0].description
 
     let ikon = document.querySelector(".icon");
     let attr = ("img/openweather/" + weatherObj.current.weather[0].icon + "@2x.png");
