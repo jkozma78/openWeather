@@ -53,6 +53,7 @@ function showPosition(position) {
 function createWeather() {
     weatherObj.alerts ? weatherAlerts():document.querySelector("#alert").innerHTML="Nincs riasztás";
     foreCast();
+    hourly();
 
 
     let rain = 0;
@@ -104,14 +105,24 @@ function frontZero(time) {
 };
 
 function foreCast(){
-    document.querySelector("#day1").innerHTML=(weatherObj.daily[0].temp.day).toFixed()
-    document.querySelector("#day2").innerHTML=weatherObj.daily[1].temp.day.toFixed()
-    document.querySelector("#day3").innerHTML=weatherObj.daily[2].temp.day.toFixed()
-    document.querySelector("#day4").innerHTML=weatherObj.daily[3].temp.day.toFixed()
+    for (let k in weatherObj.daily){
+    bt = document.createElement("div");
+    bt.setAttribute("class", "col border rounded border-success");
+    document.querySelector("#foreCast").appendChild(bt);
+    bt.innerHTML = weatherObj.daily[k].temp.day.toFixed()
+    };
 };
 
 function weatherAlerts(){
     document.querySelector("#alert").innerHTML=weatherObj.alerts[0].event
     document.querySelector(".card").innerHTML = weatherObj.alerts[0].description
-    
-}
+};
+
+function hourly(){
+    for (let k in weatherObj.hourly){
+        bt = document.createElement("div");
+        bt.setAttribute("class", "col-1 border rounded border-warning");
+        document.querySelector("#hourly").appendChild(bt);
+        bt.innerHTML = weatherObj.hourly[k].temp.toFixed();
+    };
+};
