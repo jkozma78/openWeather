@@ -5,6 +5,7 @@ let lat = "47.5";
 let lon = "19.08333"
 let latLon = [47.5, 19.08];
 getLocation();
+console.log(latLon)
 
 let url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
 
@@ -109,7 +110,10 @@ function foreCast(){
     bt = document.createElement("div");
     bt.setAttribute("class", "col border rounded border-success");
     document.querySelector("#foreCast").appendChild(bt);
-    bt.innerHTML = weatherObj.daily[k].temp.day.toFixed()
+    bt.innerHTML = weatherObj.daily[k].temp.day.toFixed()+ `&#8451`;
+    imgs=document.createElement("img");
+    imgs.setAttribute("src", "img/openweather/" + weatherObj.daily[k].weather[0].icon + "@2x.png")
+    bt.appendChild(imgs)
     };
 };
 
@@ -123,6 +127,9 @@ function hourly(){
         bt = document.createElement("div");
         bt.setAttribute("class", "col-1 border rounded border-warning");
         document.querySelector("#hourly").appendChild(bt);
-        bt.innerHTML = weatherObj.hourly[k].temp.toFixed();
+        bt.innerHTML = getTimeFromEpox(weatherObj.hourly[k].dt)+"<br>"+ weatherObj.hourly[k].temp.toFixed()+ `&#8451`;
+        imgs=document.createElement("img");
+        imgs.setAttribute("src", "img/openweather/" + weatherObj.hourly[k].weather[0].icon + "@2x.png")
+        bt.appendChild(imgs)
     };
 };
