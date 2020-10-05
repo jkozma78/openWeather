@@ -112,6 +112,7 @@ function foreCast(){
     document.querySelector("#foreCast").appendChild(bt);
     bt.innerHTML = weatherObj.daily[k].temp.day.toFixed()+ `&#8451`;
     imgs=document.createElement("img");
+    imgs.setAttribute("class","figure-img img-fluid rounded icon rounded border border-danger data-toggle='tooltip'");
     imgs.setAttribute("src", "img/openweather/" + weatherObj.daily[k].weather[0].icon + "@2x.png")
     bt.appendChild(imgs)
     };
@@ -129,6 +130,7 @@ function hourly(){
         document.querySelector("#hourly").appendChild(bt);
         bt.innerHTML = getTimeFromEpox(weatherObj.hourly[k].dt)+"<br>"+ weatherObj.hourly[k].temp.toFixed()+ `&#8451`;
         imgs=document.createElement("img");
+        imgs.setAttribute("class","figure-img img-fluid rounded icon rounded border border-danger data-toggle='tooltip'");
         imgs.setAttribute("src", "img/openweather/" + weatherObj.hourly[k].weather[0].icon + "@2x.png")
         bt.appendChild(imgs)
     };
