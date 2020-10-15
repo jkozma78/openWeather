@@ -1,15 +1,10 @@
 let appId = "bbb5cfc3ac08d0c85c9a045aea566854";
 let units = "metric";
 let lang = "hu";
-let lat = "47.5";
-let lon = "19.08333"
-//let latLon = [47.56, 18.34];
-//let latLon = [47.5, 19.08];
+let latLon = [47.56, 18.34];
 let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
 getLocation();
-
-//let url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
 
 function getServerData(url) {
     let fetchOptions = {
@@ -25,37 +20,32 @@ function getServerData(url) {
     );
 }
 
-function getd(){
-getServerData(url).then(
-    data => {
-        console.log(data)
-        weatherObj = data;
-        createWeather();
-    }
+function getd() {
+    getServerData(url).then(
+        data => {
+            console.log(data)
+            weatherObj = data;
+            createWeather();
+        }
 
 
-);
+    );
 };
 
 function getLocation() {
-    if (navigator.geolocation != "") {
+    if (navigator.geolocation != "")
         navigator.geolocation.getCurrentPosition(showPosition);
-
-    } else {
+    else {
         console.log("Geolocation is not supported by this browser.");
     }
-    
 };
 
 function showPosition(position) {
-    // console.log("Latitude: " + position.coords.latitude +
-    //     "Longitude: " + position.coords.longitude);
     latLon = [position.coords.latitude, position.coords.longitude];
     console.log(latLon);
     url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
-    console.log(url)
+    console.log(position.coords.accuracy)
     getd()
-    return url
 };
 
 
@@ -69,9 +59,11 @@ function createWeather() {
     for (let r in weatherObj.minutely) {
         rain = rain + weatherObj.minutely[r].precipitation / 24
     };
-
-
-    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt)+" "+latLon;
+    fok="rotateZ("+weatherObj.current.wind_deg+"deg"+")";
+    console.log(fok)
+    document.querySelector(".compass").style.transform=fok
+    
+    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt) + " " + latLon;
     document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm";
 
     let ikon = document.querySelector(".icon");
