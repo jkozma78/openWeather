@@ -71,7 +71,7 @@ function createWeather() {
     };
 
 
-    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt);
+    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt)+" "+latLon;
     document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm";
 
     let ikon = document.querySelector(".icon");
