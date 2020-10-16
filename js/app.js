@@ -43,7 +43,7 @@ function getLocation() {
 function showPosition(position) {
     latLon = [position.coords.latitude, position.coords.longitude];
     url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
-    console.log(position.coords.accuracy);
+    accuracy=(position.coords.accuracy);
     getd();
 };
 
@@ -58,12 +58,12 @@ function createWeather() {
     for (let r in weatherObj.minutely) {
         rain = rain + weatherObj.minutely[r].precipitation / 24
     };
-    fok="rotateZ("+weatherObj.current.wind_deg+"deg"+")";
-    console.log(fok)
-    document.querySelector(".compass").style.transform=fok
-    
-    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt) + " " + latLon;
-    document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm";
+
+    fok = "rotateZ(" + weatherObj.current.wind_deg + "deg" + ")";
+    document.querySelector(".compass").style.transform = fok;
+
+    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt) + " " + latLon + "  " + accuracy;
+    document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm/h";
 
     let ikon = document.querySelector(".icon");
     let attr = ("img/openweather/" + weatherObj.current.weather[0].icon + "@2x.png");
