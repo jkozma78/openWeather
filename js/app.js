@@ -18,7 +18,7 @@ function getServerData(url) {
         data => data.json(),
         err => console.error(err)
     );
-}
+};
 
 function getd() {
     getServerData(url).then(
@@ -42,10 +42,9 @@ function getLocation() {
 
 function showPosition(position) {
     latLon = [position.coords.latitude, position.coords.longitude];
-    console.log(latLon);
     url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
-    console.log(position.coords.accuracy)
-    getd()
+    console.log(position.coords.accuracy);
+    getd();
 };
 
 
