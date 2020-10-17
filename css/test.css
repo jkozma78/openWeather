@@ -14,3 +14,21 @@
 h1{
     color: blue;
 }
+
+.rose{
+    position: relative;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  z-index: 0;
+}
+
+.compass{
+    position: relative;
+    display: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    z-index: 1;
+}

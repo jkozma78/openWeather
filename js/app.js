@@ -3,8 +3,10 @@ let units = "metric";
 let lang = "hu";
 let latLon = [47.56, 18.34];
 let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+//let url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
 
 getLocation();
+
 
 function getServerData(url) {
     let fetchOptions = {
@@ -32,13 +34,23 @@ function getd() {
     );
 };
 
+
+
 function getLocation() {
     if (navigator.geolocation != "")
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, error);
     else {
         console.log("Geolocation is not supported by this browser.");
+        error();
     }
 };
+
+function error(errc){
+    console.log (errc.message);
+    url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
+    getd();
+};
+
 
 function showPosition(position) {
     latLon = [position.coords.latitude, position.coords.longitude];
@@ -62,7 +74,7 @@ function createWeather() {
     fok = "rotateZ(" + weatherObj.current.wind_deg + "deg" + ")";
     document.querySelector(".compass").style.transform = fok;
 
-    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt) + " " + latLon + "  " + accuracy;
+    document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt) + " " + latLon;
     document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm/h";
 
     let ikon = document.querySelector(".icon");
