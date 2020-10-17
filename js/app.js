@@ -43,7 +43,7 @@ function getLocation() {
 function showPosition(position) {
     latLon = [position.coords.latitude, position.coords.longitude];
     url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
-    accuracy=(position.coords.accuracy);
+    accuracy = (position.coords.altitude);
     getd();
 };
 
@@ -109,7 +109,7 @@ function foreCast() {
         bt = document.createElement("div");
         bt.setAttribute("class", "col border rounded border-success");
         document.querySelector("#foreCast").appendChild(bt);
-        bt.innerHTML = weatherObj.daily[k].temp.day.toFixed() + `&#8451` + " " + dayNames[new Date(weatherObj.daily[k].dt * 1000).getUTCDay()];
+        bt.innerHTML = weatherObj.daily[k].temp.day.toFixed() + `&#8451` + "<br>" + dayNames[new Date(weatherObj.daily[k].dt * 1000).getUTCDay()];
         imgs = document.createElement("img");
         imgs.setAttribute("class", "figure-img img-fluid rounded icon rounded border border-danger data-toggle='tooltip'");
         imgs.setAttribute("src", "img/openweather/" + weatherObj.daily[k].weather[0].icon + "@2x.png")
