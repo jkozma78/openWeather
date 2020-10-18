@@ -17,6 +17,8 @@ h1{
 
 #counter {
     position: relative;
+justify-content:center;
+align-items: center;
 }
 #over {
     position:absolute;
