@@ -15,20 +15,18 @@ h1{
     color: blue;
 }
 
-.rose{
+#counter {
     position: relative;
-    display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  z-index: 0;
 }
-
-.compass{
-    position: relative;
-    display: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
-    z-index: 1;
+#over {
+    position:absolute;
+    top: auto;
+    left: auto;
+    width: 10%;
+}
+#over1 {
+    position:absolute;
+    top: auto;
+    left: auto;
+    
 }
