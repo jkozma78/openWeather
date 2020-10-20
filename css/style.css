@@ -48,7 +48,7 @@
 .clock .sec, .sc
 {
     width: 130px;
-    height: 130px;
+    height: 100px;
 }
 
 .sc{
@@ -83,7 +83,7 @@
     content: " ";
     position: absolute;
     width: 2px;
-    height: 90px;
+    height: 100px;
     background: rgb(75, 14, 241);
     z-index: 12;
     border-radius: 6px 6px 0 0;
