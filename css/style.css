@@ -56,6 +56,13 @@
     position: absolute;
     border-radius: 50%;
 }
+.mn{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: absolute;
+    border-radius: 50%;
+}
 
 
 /* .hr:before{
@@ -72,8 +79,8 @@
     content: " ";
     position: absolute;
     width: 4px;
-    height: 100px;
-    background: #fff;
+    height: 50px;
+    background:rgb(240, 5, 5);
     z-index: 11;
     border-radius: 6px 6px 0 0;
 } 
