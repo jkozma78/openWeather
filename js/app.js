@@ -73,6 +73,7 @@ function createWeather() {
 
     //fok = "rotateZ(" + weatherObj.current.wind_deg + "deg" + ")";
     document.querySelector(".sc").style.transform = "rotateZ(" + weatherObj.current.wind_deg + "deg" + ")";
+    document.querySelector(".mn").style.transform = "rotateZ(" + weatherObj.current.wind_deg + "deg" + ")";
 
     document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt) + " " + latLon;
     document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm/h";
