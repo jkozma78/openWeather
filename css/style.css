@@ -1,3 +1,19 @@
+.sc{
+    opacity:1;
+    /* margin-top:20px; */
+    animation-name: example;
+    animation-duration: 10s;
+    animation-delay: 1s;
+    animation-fill-mode: none;
+    
+}
+
+@keyframes example {
+    from {transform: rotateZ(0deg);}  
+    
+    to {transform: rotateZ(360deg);}
+}
+
 .clock{
     width: 150px;
     height: 150px;
@@ -93,4 +109,5 @@
     background: rgb(75, 14, 241);
     z-index: 12;
     border-radius: 6px 6px 0 0;
+    
 }
