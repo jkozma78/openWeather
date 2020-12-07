@@ -76,7 +76,7 @@ function createWeather() {
     document.querySelector(".mn").style.transform = "rotateZ(" + weatherObj.current.wind_deg + "deg" + ")";
 
     document.querySelector("h1").innerHTML = getTimeFromEpox(weatherObj.current.dt) + " " + latLon;
-    document.querySelector("h4").innerHTML = "A következő órában várható eső: " + rain.toFixed(1) + " mm/h";
+    document.querySelector("h4").innerHTML = "A következő órában várható csapadékk: " + rain.toFixed(1) + " mm/h";
 
     let ikon = document.querySelector(".icon");
     let attr = ("img/openweather/" + weatherObj.current.weather[0].icon + "@2x.png");
