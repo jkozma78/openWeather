@@ -47,14 +47,14 @@ function getLocation() {
 
 function error(errc){
     console.log (errc.message);
-    url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
+    url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
     getd();
 };
 
 
 function showPosition(position) {
     latLon = [position.coords.latitude, position.coords.longitude];
-    url = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
+    url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latLon[0] + "&lon=" + latLon[1] + "&appid=" + appId + "&units=" + units + "&lang=" + lang;
     accuracy = (position.coords.altitude);
     getd();
 };
